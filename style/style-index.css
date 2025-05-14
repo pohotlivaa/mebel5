@@ -1,0 +1,543 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+
+}
+
+/* Шапка */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px 31px;
+    border-bottom: 1px solid #eee;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    margin-right: 72px;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+}
+
+.nav {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.nav-links {
+    display: flex;
+    gap: 72px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.nav-spacer {
+    width: 189px;
+    flex-shrink: 0;
+}
+
+/* Главный баннер */
+.hero {
+    display: flex;
+    background-color: #FFFEEE;
+    height: 300px;
+    padding: 0 31px;
+    position: relative;
+}
+
+.hero-content {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    height: 260px;
+}
+
+.hero-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 40px;
+    z-index: 2;
+    position: relative;
+}
+
+.hero-text h1 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 39px;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.hero-text p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+    color: #555;
+    margin: 0;
+    width: 238px;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+.hero-image img {
+    width: 229px;
+    height: 300px;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+}
+
+/* Основной контейнер */
+.main-container {
+    padding: 0 31px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Блок преимуществ */
+.benefits {
+    margin-top: 51px;
+    display: flex;
+}
+
+.benefits-text {
+    flex: 1;
+    padding-right: 40px;
+    position: relative;
+}
+
+.benefits-text h2 {
+    position: absolute;
+    width: 267px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 29px;
+    color: #000000;
+    margin: 0;
+}
+
+.benefits-text p {
+    position: absolute;
+    width: 238px;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 15px;
+    color: #555;
+    margin: 0;
+    top: 95px;
+}
+
+.benefits-items {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+}
+
+.benefit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 110px;
+}
+
+.benefit-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+.benefit-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.benefit-text {
+    font-size: 14px;
+    text-align: center;
+    width: 206px;
+}
+
+/* Примеры работ */
+.portfolio {
+    margin-top: 60px;
+}
+
+.portfolio h2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 29px;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.portfolio-item {
+    width: calc((100% - 40px) / 3);
+    height: 300px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    overflow: hidden;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Блок с призывом */
+.cta {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.cta-image {
+    width: calc((200% - 40px) / 3);
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    overflow: hidden;
+}
+
+.cta-content {
+    width: 195px;
+    height: 160px;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cta-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 29px;
+    color: #000000;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-button {
+    width: 140px;
+    height: 100%;
+    background-color: #A13F40;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #8a3637;
+    transform: scale(1.05);
+}
+
+/* Подвал */
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 40px 31px;
+    border-top: 1px solid #eee;
+    margin-top: 60px;
+}
+
+.footer-columns {
+    display: flex;
+    gap: 71px;
+    margin-right: 83px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-item {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+}
+
+/* Адаптив для планшетов (768px - 1024px) */
+@media (max-width: 1024px) {
+    .header {
+        padding: 20px 25px;
+    }
+
+    .logo {
+        margin-right: 40px;
+    }
+
+    .nav-links {
+        gap: 40px;
+    }
+
+    .nav-spacer {
+        width: 100px;
+    }
+
+    .hero-text h1 {
+        font-size: 42px;
+        line-height: 1.2;
+    }
+
+    .hero-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .benefits-text h2 {
+        font-size: 22px;
+        line-height: 1.3;
+    }
+
+    .portfolio h2 {
+        font-size: 36px;
+    }
+
+    .portfolio-item {
+        height: 250px;
+    }
+
+    .cta-image {
+        height: 350px;
+    }
+
+    .cta-text {
+        font-size: 26px;
+    }
+
+    .footer-columns {
+        gap: 50px;
+        margin-right: 50px;
+    }
+}
+
+/* Адаптив для мобильных устройств (до 768px) */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .logo {
+        margin-right: 0;
+        align-self: flex-start;
+    }
+
+    .nav {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-spacer {
+        display: none;
+    }
+
+    .hero {
+        height: auto;
+        padding: 40px 15px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        height: auto;
+        gap: 30px;
+    }
+
+    .hero-text {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .hero-text p {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .hero-image {
+        justify-content: center;
+    }
+
+    .hero-image img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .main-container {
+        padding: 0 15px;
+    }
+
+    .benefits {
+        flex-direction: column;
+        margin-top: 40px;
+    }
+
+    .benefits-text h2,
+    .benefits-text p {
+        position: static;
+        width: 100%;
+        text-align: center;
+    }
+
+    .benefits-text p {
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+
+    .benefits-items {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .benefit-item {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .portfolio h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .portfolio-grid {
+        flex-direction: column;
+    }
+
+    .portfolio-item {
+        width: 100%;
+        height: 250px;
+    }
+
+    .cta {
+        flex-direction: column;
+        margin-top: 40px;
+    }
+
+    .cta-image {
+        width: 100%;
+        height: 300px;
+    }
+
+    .cta-content {
+        width: 100%;
+        padding: 30px 0;
+        align-items: center;
+    }
+
+    .cta-text {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .footer {
+        justify-content: center;
+        padding: 30px 15px;
+    }
+
+    .footer-columns {
+        flex-direction: column;
+        gap: 30px;
+        margin-right: 0;
+    }
+}
+
+/* Мелкие мобильные устройства (до 480px) */
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 28px;
+    }
+
+    .benefits-text h2 {
+        font-size: 20px;
+    }
+
+    .portfolio h2 {
+        font-size: 24px;
+    }
+
+    .portfolio-item {
+        height: 200px;
+    }
+
+    .cta-text {
+        font-size: 20px;
+    }
+
+    .footer-item {
+        font-size: 14px;
+    }
+}
