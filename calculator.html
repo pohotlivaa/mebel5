@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style/fonts.css">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Калькулятор мебели</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="img/logo.png" alt="Логотип" width="40" height="40">
+        </div>
+        <nav class="nav">
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="calculator.html">Калькулятор и обратная связь</a>
+                <a href="doki.html">О компании</a>
+            </div>
+            <div class="nav-spacer"></div>
+        </nav>
+    </header>
+    
+    <div class="main-container">
+        <h1 class="calculator-title">Калькулятор стоимости мебели</h1>
+        
+        <div class="forms-container">
+            <!-- Форма расчета стоимости -->
+            <div class="form-section">
+                <h2 class="form-title">Рассчитать стоимость</h2>
+                <form id="calculator-form">
+                    <div class="form-group">
+                        <label for="furniture-type">Тип мебели</label>
+                        <select id="furniture-type" required>
+                            <option value="">Выберите тип</option>
+                            <option value="wardrobe">Шкаф</option>
+                            <option value="kitchen">Кухня</option>
+                            <option value="table">Стол</option>
+                            <option value="sofa">Диван</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="material">Материал</label>
+                        <select id="material" required>
+                            <option value="">Выберите материал</option>
+                            <option value="wood">Дерево</option>
+                            <option value="mdf">МДФ</option>
+                            <option value="plastic">Пластик</option>
+                            <option value="metal">Металл</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="size">Размер (м²)</label>
+                        <input type="number" id="size" min="0.1" step="0.1" required>
+                    </div>
+                    
+                    <button type="submit" class="calculate-btn">Рассчитать</button>
+                    
+                    <div id="result" class="result" style="display: none;">
+                        Примерная стоимость: <span id="price">0</span> руб.
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Форма заявки -->
+            <div class="form-section">
+                <h2 class="form-title">Оставить заявку</h2>
+                <form id="order-form">
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="surname">Фамилия</label>
+                        <input type="text" id="surname" name="surname" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <input type="hidden" name="estimated_price" id="estimated-price" value="0">
+                    
+                    <button type="submit" class="submit-btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+ <footer class="footer">
+        <div class="footer-columns">
+            <div class="footer-column">
+                <a href="index.html" class="footer-item">Главная</a>
+                <a href="calculator.html" class="footer-item">Калькулятор</a>
+                <a href="about.html" class="footer-item">О компании</a>
+                <a href="portfolio.html" class="footer-item">Портфолио</a>
+            </div>
+            <div class="footer-column">
+                <a href="#" class="footer-item">Контакты</a>
+                <a href="#" class="footer-item">Доставка и оплата</a>
+                <a href="#" class="footer-item">Отзывы</a>
+                <a href="#" class="footer-item">Блог</a>
+            </div>
+            <div class="footer-column">
+                <a href="tel:+78001234567" class="footer-item">+7 (800) 123-45-67</a>
+                <a href="mailto:info@mebel-dream.ru" class="footer-item">info@mebel-dream.ru</a>
+                <a href="#" class="footer-item">г. Москва, ул. Мебельная, 15</a>
+                <a href="#" class="footer-item">Режим работы: 9:00-21:00</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка админа -->
+    <button class="admin-btn" id="admin-btn">Админ-панель</button>
+
+    <script>
+        // Хранилище для заказов
+        let orders = JSON.parse(localStorage.getItem('furniture_orders')) || [];
+        
+        // Расчет стоимости
+        document.getElementById('calculator-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const type = document.getElementById('furniture-type').value;
+            const material = document.getElementById('material').value;
+            const size = parseFloat(document.getElementById('size').value);
+            
+            let basePrice = 0;
+            
+            switch(type) {
+                case 'wardrobe': basePrice = 5000; break;
+                case 'kitchen': basePrice = 10000; break;
+                case 'table': basePrice = 3000; break;
+                case 'sofa': basePrice = 8000; break;
+                default: basePrice = 0;
+            }
+            
+            let materialCoeff = 1;
+            switch(material) {
+                case 'wood': materialCoeff = 1.5; break;
+                case 'mdf': materialCoeff = 1.2; break;
+                case 'plastic': materialCoeff = 0.8; break;
+                case 'metal': materialCoeff = 1.3; break;
+            }
+            
+            const totalPrice = Math.round(basePrice * materialCoeff * size);
+            
+            document.getElementById('price').textContent = totalPrice;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('estimated-price').value = totalPrice;
+        });
+        
+        // Обработка формы заявки
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                surname: document.getElementById('surname').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                estimated_price: document.getElementById('estimated-price').value,
+                date: new Date().toISOString(),
+                id: Date.now() // Уникальный ID для заказа
+            };
+            
+            orders.push(formData);
+            localStorage.setItem('furniture_orders', JSON.stringify(orders));
+            
+            alert('Ваша заявка принята! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
+        });
+        
+        // // Переход в админ-панель
+        // document.getElementById('admin-btn').addEventListener('click', function() {
+        //     const password = prompt('Введите пароль для доступа к админ-панели:');
+        //     if (password === '1') { // Пароль можно изменить
+        //         window.location.href = 'admin.html';
+        //     } else {
+        //         alert('Неверный пароль!');
+        //     }
+        // });
+
+// Замените обработчик кнопки админа на этот:
+document.getElementById('admin-btn').addEventListener('click', function() {
+    const password = prompt('Введите пароль для доступа к админ-панели:');
+    if (password === 'admin123') {
+        // Сохраняем флаг авторизации в sessionStorage
+        sessionStorage.setItem('admin_authenticated', 'true');
+        window.location.href = 'admin.html';
+    } else {
+        alert('Неверный пароль!');
+    }
+});
+    </script>
+</body>
+</html>
